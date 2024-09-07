@@ -93,6 +93,8 @@ color: #000000;
 .btn.btn-primary:hover,
 .btn.btn-primary:focus {
   background: #81A9F9;
+  border: 5px solid #81A9F9;
+  border-radius: 20px;
 }
 .listarrow{
 padding:0px;
@@ -802,6 +804,8 @@ margin: 0;
   text-align: center;
   background: #FFFFFF;
   color: #5A5A5A;
+  border: 5px solid white;
+  border-radius: 20px;
 }
 #pricing ul.pricing li {
   display: block;
@@ -812,6 +816,8 @@ margin: 0;
   padding: 15px 15px 30px;
   color: #F4FBFF !important;
   height: 225px;
+  border: 5px solid #EEF2F5;
+  border-radius: 20px;
 }
 #pricing ul.pricing li.plan-header .price-duration {
   position: relative;
@@ -824,6 +830,8 @@ margin: 0;
 }
 li.plan-purchase .btn {
   width: 100%;
+  border: 5px solid #2F71D8;
+  border-radius: 20px;
 }
 
 #pricing ul.pricing li.plan-header .price-duration > span {
@@ -848,8 +856,9 @@ li.plan-purchase .btn {
 }
 #pricing ul.pricing.featured {
   background: #001745; 
-  border: 0;
+  border: 5px solid #001745;
   color: #FCFCFC;
+  border-radius: 20px;
 }
 #pricing ul.pricing.featured  li.plan-header .price-duration{
 color: #234259;
