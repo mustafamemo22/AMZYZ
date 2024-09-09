@@ -883,6 +883,8 @@ color: #234259;
  padding: 50px;
  margin-bottom: 50px;
  color: #fff;
+ border: 5px solid #133986;
+ border-radius: 50px;
 }
 .contact-info address {
 margin-bottom: 20px;
