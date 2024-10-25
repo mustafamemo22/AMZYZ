@@ -116,3 +116,13 @@ jQuery(function($) {
  
 
 });
+document.getElementById("toggleLang").addEventListener("click", function() {
+    const isEnglish = document.documentElement.lang === "en";
+    document.documentElement.lang = isEnglish ? "ar" : "en";
+    document.getElementById("toggleLang").textContent = isEnglish ? "EN" : "AR";
+
+    // Toggle text content for each section
+    document.querySelectorAll("[data-en]").forEach(element => {
+        element.textContent = isEnglish ? element.getAttribute("data-ar") : element.getAttribute("data-en");
+    });
+});
