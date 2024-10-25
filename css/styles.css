@@ -871,7 +871,7 @@ color: #234259;
 }
 #contact-us {
   padding: 100px 0 10px;
-  background: #000 url('../images/map-image.png') top left no-repeat;
+  background: #133986;
 }
 #contact-us h1,
 #contact-us h2 {
@@ -879,11 +879,11 @@ color: #234259;
 }
 /*Contact*/
  .contact-info{
- background: #133986;
+ background: #2b2b2b;
  padding: 50px;
- margin-bottom: 50px;
+ margin-bottom: 100px;
  color: #fff;
- border: 5px solid #133986;
+ border: 5px solid #2b2b2b;
  border-radius: 50px;
 }
 .contact-info address {
@@ -933,6 +933,69 @@ iframe {
   height: 170px;
   border: none;
 }
+
+#required-documents {
+  background-image: url('../images/map-image.jpg'); 
+  padding: 50px 0;
+  background-color: #f9f9f9;
+}
+
+.degrees-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.degree {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border: 1px solid #ddd;
+  transition: transform 0.3s ease;
+}
+
+.degree:hover {
+  transform: translateY(-10px);
+}
+
+.degree h3 {
+  color: #133986;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.degree ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.degree ul li {
+  background-color: #f0f0f0;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.fees {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.fees li {
+  background-color: #fff;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  color: #d32f2f;
+}
+
+#sec {
+  color: #fff;
+}
+
 
 /*  */
 
