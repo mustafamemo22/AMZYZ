@@ -89,6 +89,13 @@ color: #000000;
 }
 .btn.btn-primary {
   background: #2F71D8;
+  margin: 60%;
+}
+.btn.btn-success{
+  background: #2F71D8;
+  margin: 65%;
+  border: 5px #2F71D8;
+  border-radius: 15px;
 }
 .btn.btn-primary:hover,
 .btn.btn-primary:focus {
