@@ -121,8 +121,22 @@ document.getElementById("toggleLang").addEventListener("click", function() {
     document.documentElement.lang = isEnglish ? "ar" : "en";
     document.getElementById("toggleLang").textContent = isEnglish ? "EN" : "AR";
 
-    // Toggle text content for each section
+    // Toggle text content for each element with [data-en] and [data-ar]
     document.querySelectorAll("[data-en]").forEach(element => {
-        element.textContent = isEnglish ? element.getAttribute("data-ar") : element.getAttribute("data-en");
+        const contentEn = element.getAttribute("data-en");
+        const contentAr = element.getAttribute("data-ar");
+
+        if (contentEn && contentAr) {
+            // التأكد من تحديث العقدة النصية الأولى فقط بدون التأثير على البنية
+            let textNodeFound = false;
+            element.childNodes.forEach(node => {
+                if (node.nodeType === Node.TEXT_NODE && !textNodeFound) {
+                    node.nodeValue = isEnglish ? contentAr : contentEn;
+                    textNodeFound = true; // تحديث العقدة النصية الأولى فقط لتجنب التكرار
+                }
+            });
+        }
     });
 });
+
+

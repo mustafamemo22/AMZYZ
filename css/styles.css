@@ -949,6 +949,7 @@ iframe {
 .degrees-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .degree {
@@ -957,6 +958,7 @@ iframe {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   border: 1px solid #ddd;
+  width: 100%;
   transition: transform 0.3s ease;
 }
 
@@ -1128,61 +1130,108 @@ text-align: center;
   #footer .social-icons {
     float: right;
   }
+  .degree {
+    width: 100%; /* جعل العناصر داخل .degrees-container تأخذ عرض 45% */
+    margin: 10px; /* إضافة تباعد بين العناصر */
+  }
 }
-@media only screen and (max-width:768px){
-.navbar-default .navbar-collapse, .navbar-default .navbar-form {
-border-color: #A3A3A3;
-padding: 10px 0;
+
+/* شاشات بعرض 768px فأقل */
+@media only screen and (max-width: 768px) {
+  .navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: #A3A3A3;
+    padding: 10px 0;
+  }
+
+  #main-nav.navbar-default {
+    background: #FFFFFF;
+    padding: 1px 0 15px;
+  }
+
+  #main-nav.navbar-default .navbar-nav > li > a {
+    padding-top: 8px;
+    padding-bottom: 13px;
+    border-top: 4px solid transparent;
+  }
+
+  .navbar-default .navbar-nav > li > a {
+    color: #9E9E9E; 
+  }
+
+  .form-control {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+  }
+
+  .degree {
+    width: 100%; /* تجعل كل عمود يأخذ العرض الكامل */
+    margin-bottom: 15px;
+  }
+  .degrees-container {
+    justify-content: center;
+  }
 }
-#main-nav.navbar-default {
-  background: #FFFFFF;
-  padding: 1px 0 15px;
-}
-#main-nav.navbar-default .navbar-nav > li > a {
-  padding-top: 8px;
-  padding-bottom: 13px;
-  border-top: 4px solid transparent;
-}
-.navbar-default .navbar-nav>li>a {
-  color: #9E9E9E; 
-}
-}
-.form-control {
-  box-shadow: none;
-  -webkit-box-shadow: none;
-}
+
+/* شاشات بعرض 480px فأقل */
 @media only screen and (max-width: 480px) {
-#hero-banner h2 {
-margin-top: 161px;
-font-size: 26px;
-line-height: 40px;
-padding: 10px;
-}
-#hero-banner p {
-font-size: 18px;
-padding: 10px;
-}
-#portfolio .portfolio-filter {
-list-style: none;
-padding: 0;
-margin: 0 0 12px;
-}
-#portfolio .portfolio-filter > li a {
-display: block;
-padding: 7px 15px;
-margin: 5px 2px;
-}
-	#portfolio .portfolio-item {
-	width: 48.9%;
-	padding: 8px;
-	}
-	#portfolio .portfolio-item .portfolio-item-inner .portfolio-info .preview {
-width: 28px;
-height: 24px;
-line-height: 24px; 
-margin: 9px auto;
-}
-#portfolio .portfolio-item .portfolio-item-inner .portfolio-info {
-padding: 7px 0 0;
-}
+  #hero-banner h2 {
+    margin-top: 161px;
+    font-size: 26px;
+    line-height: 40px;
+    padding: 10px;
+  }
+
+  #hero-banner p {
+    font-size: 18px;
+    padding: 10px;
+  }
+
+  #portfolio .portfolio-filter {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 12px;
+  }
+
+  #portfolio .portfolio-filter > li a {
+    display: block;
+    padding: 7px 15px;
+    margin: 5px 2px;
+  }
+
+  #portfolio .portfolio-item {
+    width: 48.9%;
+    padding: 8px;
+  }
+
+  #portfolio .portfolio-item .portfolio-item-inner .portfolio-info .preview {
+    width: 28px;
+    height: 24px;
+    line-height: 24px; 
+    margin: 9px auto;
+  }
+
+  #portfolio .portfolio-item .portfolio-item-inner .portfolio-info {
+    padding: 7px 0 0;
+  }
+
+  /* ضبط الـ #required-documents والخطوط */
+  #required-documents {
+    padding: 30px 0;
+    background-size: cover;
+  }
+
+  .degree {
+    width: 100%; /* جعل العناصر تأخذ العرض الكامل للشاشة */
+    padding: 15px;
+    margin: 5px 0;
+  }
+
+  .degree h3 {
+    font-size: 18px;
+  }
+
+  .degree ul li, .fees li {
+    padding: 8px;
+    font-size: 14px;
+  }
 }
