@@ -80,6 +80,7 @@ bottom:120px;
 	right: 0;
 	top: 0;
 	bottom: 0;
+	background-image: linear-gradient(357deg, black, transparent 80%);
 }
 
 /* Custom navigation arrows */
