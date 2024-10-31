@@ -138,5 +138,18 @@ document.getElementById("toggleLang").addEventListener("click", function() {
         }
     });
 });
+function sendMail(event) {
+    event.preventDefault(); // منع إرسال النموذج بشكل عادي
 
+    // الحصول على قيم الحقول
+    const name = document.querySelector('input[name="name"]').value;
+    const email = document.querySelector('input[name="email"]').value;
+    const subject = document.querySelector('input[name="subject"]').value;
+    const message = document.querySelector('textarea[name="message"]').value;
 
+    // إنشاء رابط mailto
+    const mailtoLink = `mailto:Mustafamemo2274@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\nMessage: " + message)}`;
+
+    // فتح رابط mailto
+    window.location.href = mailtoLink;
+  };

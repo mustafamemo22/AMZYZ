@@ -96,12 +96,12 @@ color: #000000;
   border: 5px #2F71D8;
   border-radius: 15px;
 }
-.btn.btn-primary:hover,
+/* .btn.btn-primary:hover,
 .btn.btn-primary:focus {
   background: #81A9F9;
   border: 5px solid #81A9F9;
   border-radius: 20px;
-}
+} */
 .listarrow{
 padding:0px;
 }
