@@ -36,7 +36,7 @@ function submitApplication(event) {
     submitButton.innerHTML = 'Submitting...';
 
     // Send to server
-    fetch('https://b6f9-156-205-100-125.ngrok-free.app/submit-application', {
+    fetch('https://78ab-156-205-100-125.ngrok-free.app/submit-application', {
         method: 'POST',
         body: formData
     })
