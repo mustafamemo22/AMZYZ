@@ -29,11 +29,18 @@ jQuery(function($) {
 
     // Navigation click handler
     $('.navbar-collapse ul li a').on('click', function(e) {
-        e.preventDefault();
-        const target = $(this.hash);
-        if (target.length) {
-            smoothScroll(target);
-            $('.navbar-collapse').collapse('hide');
+        const href = $(this).attr('href');
+        if (href === 'index.html' || href.startsWith('index.html#')) {
+            // Allow default navigation to index.html or index.html#section
+            return true;
+        }
+        if (href.startsWith('#')) {
+            e.preventDefault();
+            const target = $(href);
+            if (target.length) {
+                smoothScroll(target);
+                $('.navbar-collapse').collapse('hide');
+            }
         }
     });
 

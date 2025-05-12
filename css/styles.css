@@ -79,21 +79,40 @@ a:hover, a:focus {
 
 /* Navigation */
 #main-nav.navbar-default {
-  background: white;
-  box-shadow: var(--box-shadow);
-  padding: 15px 0;
-  transition: var(--transition);
+  background: #FFFFFF;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
-.navbar-brand img {
-  max-height: 50px;
-  transition: var(--transition);
+#main-nav .navbar-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#main-nav .navbar-brand {
+  margin: 0 auto;
+  float: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 110px;
+  padding: 10px 0 0 0;
+}
+
+#main-nav .navbar-brand img {
+  max-height: 100px;
+  width: auto;
+  display: block;
 }
 
 .navbar-nav > li > a {
   color: var(--secondary-color);
   font-weight: 600;
-  padding: 15px 20px;
+  padding-top: 24px;
+  padding-bottom: 24px;
   transition: var(--transition);
 }
 
@@ -101,6 +120,23 @@ a:hover, a:focus {
 .navbar-nav > li.active > a {
   color: var(--primary-color);
   background: transparent;
+}
+
+#toggleLang, .lang-btn {
+  min-width: 60px;
+  min-height: 40px;
+  font-size: 18px;
+  border-radius: 20px;
+  padding: 8px 22px;
+  font-weight: 700;
+  margin-left: 18px;
+  box-shadow: 0 2px 8px rgba(52,152,219,0.07);
+  transition: background 0.2s, color 0.2s;
+}
+
+#toggleLang:hover, .lang-btn:hover {
+  background: #2980b9;
+  color: #fff;
 }
 
 /* Hero Section */
@@ -205,10 +241,16 @@ a:hover, a:focus {
 
 /* Contact Section */
 .contact-info {
-  background: white;
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: var(--box-shadow);
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 6px 32px rgba(44, 62, 80, 0.13), 0 1.5px 4px rgba(44, 62, 80, 0.08);
+  padding: 40px 32px;
+  margin-bottom: 40px;
+}
+
+.contact-info:hover {
+  box-shadow: 0 6px 32px rgba(44, 62, 80, 0.13), 0 1.5px 4px rgba(44, 62, 80, 0.08);
+  transform: none;
 }
 
 .form-control {
@@ -252,6 +294,14 @@ a:hover, a:focus {
   .navbar-nav > li > a {
     padding: 10px 15px;
   }
+
+  #main-nav .navbar-brand {
+    height: 70px;
+    padding: 8px 0 0 0;
+  }
+  #main-nav .navbar-brand img {
+    max-height: 70px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -266,6 +316,75 @@ a:hover, a:focus {
   
   .contact-info {
     padding: 20px;
+  }
+}
+
+@media (min-width: 992px) {
+  #main-nav .navbar-header {
+    width: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  #main-nav .navbar-brand {
+    margin: 0;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 110px;
+    padding: 10px 0 0 0;
+  }
+}
+
+@media (max-width: 991px) {
+  #main-nav .navbar-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #main-nav .navbar-brand {
+    margin: 0 auto;
+    float: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    padding: 8px 0 0 0;
+  }
+  #main-nav .navbar-brand img {
+    max-height: 70px;
+  }
+  #toggleLang, .lang-btn {
+    min-width: 50px;
+    min-height: 36px;
+    font-size: 16px;
+    padding: 6px 14px;
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  #main-nav .navbar-header {
+    justify-content: center;
+  }
+  #main-nav .navbar-brand {
+    height: 60px;
+    padding: 4px 0 0 0;
+  }
+  #main-nav .navbar-brand img {
+    max-height: 50px;
+  }
+  #toggleLang, .lang-btn {
+    width: 100%;
+    min-width: unset;
+    min-height: 36px;
+    font-size: 15px;
+    margin: 10px 0 0 0;
+    padding: 8px 0;
+    display: block;
+    text-align: center;
   }
 }
 
@@ -308,7 +427,7 @@ color: #555;
   font-size: 44px;
   position: relative;
   padding-bottom: 20px;
-  margin: 0 0 20px;  
+  margin: 10 0 20px;  
 
 
   display: block;
@@ -436,8 +555,7 @@ color: #FFFFFF;
   margin-top: 32px;
 }
 .navbar.navbar-default .navbar-brand {
-  height: auto;
-  padding: 5px 15px 1px;
+  padding: 10px 0 0 0 !important;
 }
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus{
 color: #3498db;
