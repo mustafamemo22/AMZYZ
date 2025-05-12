@@ -1,152 +1,199 @@
-
 jQuery(function($) {
     'use strict';
-     
-    $(window).scroll(function(event) {
-        Scroll();
-    });
-
-    $('.navbar-collapse ul li a').on('click', function() {
-        $('html, body').animate({
-            scrollTop: $(this.hash).offset().top - 80
-        }, 1000);
-        return false;
-    });
- 
-    function Scroll() {
-        var contentTop = [];
-        var contentBottom = [];
-        var winTop = $(window).scrollTop();
-        var rangeTop = 200;
-        var rangeBottom = 500;
-        $('.navbar-collapse').find('.scroll a').each(function() {
-            contentTop.push($($(this).attr('href')).offset().top);
-            contentBottom.push($($(this).attr('href')).offset().top + $($(this).attr('href')).height());
-        })
-        $.each(contentTop, function(i) {
-            if (winTop > contentTop[i] - rangeTop) {
-                $('.navbar-collapse li.scroll')
-                    .removeClass('active')
-                    .eq(i).addClass('active');
-            }
-        })
+    
+    // Performance optimization
+    const debounce = (func, wait) => {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
     };
 
-    $('#tohash').on('click', function() {
+    // Smooth scroll with performance optimization
+    const smoothScroll = (target, offset = 80) => {
         $('html, body').animate({
-            scrollTop: $(this.hash).offset().top - 5
-        }, 1000);
-        return false;
+            scrollTop: $(target).offset().top - offset
+        }, 800, 'swing');
+    };
+
+    // Scroll event with debounce
+    $(window).scroll(debounce(function() {
+        updateActiveNav();
+        animateOnScroll();
+    }, 10));
+
+    // Navigation click handler
+    $('.navbar-collapse ul li a').on('click', function(e) {
+        e.preventDefault();
+        const target = $(this.hash);
+        if (target.length) {
+            smoothScroll(target);
+            $('.navbar-collapse').collapse('hide');
+        }
     });
 
-  
-    new WOW().init();
-     
-    smoothScroll.init();
-
-    
-    $(window).load(function() {
-        'use strict';
-        var $portfolio_selectors = $('.portfolio-filter >li>a');
-        var $portfolio = $('.portfolio-items');
-        $portfolio.isotope({
-            itemSelector: '.portfolio-item',
-            layoutMode: 'fitRows'
-        });
-
-        $portfolio_selectors.on('click', function() {
-            $portfolio_selectors.removeClass('active');
-            $(this).addClass('active');
-            var selector = $(this).attr('data-filter');
-            $portfolio.isotope({
-                filter: selector
-            });
-            return false;
-        });
-    });
-
-    $(document).ready(function() {
-   
-        $.fn.animateNumbers = function(stop, commas, duration, ease) {
-            return this.each(function() {
-                var $this = $(this);
-                var start = parseInt($this.text().replace(/,/g, ""));
-                commas = (commas === undefined) ? true : commas;
-                $({
-                    value: start
-                }).animate({
-                    value: stop
-                }, {
-                    duration: duration == undefined ? 1000 : duration,
-                    easing: ease == undefined ? "swing" : ease,
-                    step: function() {
-                        $this.text(Math.floor(this.value));
-                        if (commas) {
-                            $this.text($this.text().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
-                        }
-                    },
-                    complete: function() {
-                        if (parseInt($this.text()) !== stop) {
-                            $this.text(stop);
-                            if (commas) {
-                                $this.text($this.text().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
-                            }
-                        }
-                    }
-                });
-            });
-        };
-
-        $('.business-stats').bind('inview', function(event, visible, visiblePartX, visiblePartY) {
-            var $this = $(this);
-            if (visible) {
-                $this.animateNumbers($this.data('digit'), false, $this.data('duration'));
-                $this.unbind('inview');
+    // Update active navigation
+    function updateActiveNav() {
+        const scrollPosition = $(window).scrollTop();
+        $('.navbar-collapse .scroll a').each(function() {
+            const target = $($(this).attr('href'));
+            if (target.length) {
+                const targetTop = target.offset().top - 100;
+                const targetBottom = targetTop + target.height();
+                if (scrollPosition >= targetTop && scrollPosition < targetBottom) {
+                    $('.navbar-collapse li.scroll').removeClass('active');
+                    $(this).parent().addClass('active');
+                }
             }
         });
+    }
+
+    // Animate elements on scroll
+    function animateOnScroll() {
+        $('.animate-on-scroll').each(function() {
+            const elementTop = $(this).offset().top;
+            const elementBottom = elementTop + $(this).height();
+            const viewportTop = $(window).scrollTop();
+            const viewportBottom = viewportTop + $(window).height();
+
+            if (elementBottom > viewportTop && elementTop < viewportBottom) {
+                $(this).addClass('animated');
+            }
+        });
+    }
+
+    // Initialize WOW.js for scroll animations
+    new WOW().init();
+
+    // Portfolio filtering with smooth transitions
+    $(window).on('load', function() {
+        const $portfolio = $('.portfolio-items');
+        const $portfolioFilters = $('.portfolio-filter > li > a');
+
+        $portfolio.isotope({
+            itemSelector: '.portfolio-item',
+            layoutMode: 'fitRows',
+            transitionDuration: '0.4s'
+        });
+
+        $portfolioFilters.on('click', function(e) {
+            e.preventDefault();
+            $portfolioFilters.removeClass('active');
+            $(this).addClass('active');
+            
+            const filterValue = $(this).attr('data-filter');
+            $portfolio.isotope({ filter: filterValue });
+        });
     });
 
- 
+    // Animate numbers with improved performance
+    $.fn.animateNumbers = function(stop, commas, duration, ease) {
+        return this.each(function() {
+            const $this = $(this);
+            const start = parseInt($this.text().replace(/,/g, ""));
+            const commaFormat = commas === undefined ? true : commas;
+            
+            $({ value: start }).animate({ value: stop }, {
+                duration: duration || 1000,
+                easing: ease || "swing",
+                step: function() {
+                    $this.text(Math.floor(this.value));
+                    if (commaFormat) {
+                        $this.text($this.text().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+                    }
+                },
+                complete: function() {
+                    if (parseInt($this.text()) !== stop) {
+                        $this.text(stop);
+                        if (commaFormat) {
+                            $this.text($this.text().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+                        }
+                    }
+                }
+            });
+        });
+    };
+
+    // Animate stats when in view
+    $('.business-stats').bind('inview', function(event, visible) {
+        if (visible) {
+            const $this = $(this);
+            $this.animateNumbers($this.data('digit'), false, $this.data('duration'));
+            $this.unbind('inview');
+        }
+    });
+
+    // Initialize prettyPhoto with custom settings
     $("a[rel^='prettyPhoto']").prettyPhoto({
-        social_tools: false
+        social_tools: false,
+        theme: 'light_rounded',
+        animation_speed: 'fast',
+        slideshow: 5000,
+        autoplay_slideshow: false,
+        show_title: true,
+        overlay_gallery: true
     });
- 
-
 });
+
+// Language toggle with improved performance
 document.getElementById("toggleLang").addEventListener("click", function() {
     const isEnglish = document.documentElement.lang === "en";
     document.documentElement.lang = isEnglish ? "ar" : "en";
-    document.getElementById("toggleLang").textContent = isEnglish ? "EN" : "AR";
+    this.textContent = isEnglish ? "EN" : "AR";
 
-    // Toggle text content for each element with [data-en] and [data-ar]
-    document.querySelectorAll("[data-en]").forEach(element => {
-        const contentEn = element.getAttribute("data-en");
-        const contentAr = element.getAttribute("data-ar");
+    // Use requestAnimationFrame for smooth DOM updates
+    requestAnimationFrame(() => {
+        document.querySelectorAll("[data-en]").forEach(element => {
+            const contentEn = element.getAttribute("data-en");
+            const contentAr = element.getAttribute("data-ar");
 
-        if (contentEn && contentAr) {
-            // التأكد من تحديث العقدة النصية الأولى فقط بدون التأثير على البنية
-            let textNodeFound = false;
-            element.childNodes.forEach(node => {
-                if (node.nodeType === Node.TEXT_NODE && !textNodeFound) {
-                    node.nodeValue = isEnglish ? contentAr : contentEn;
-                    textNodeFound = true; // تحديث العقدة النصية الأولى فقط لتجنب التكرار
-                }
-            });
-        }
+            if (contentEn && contentAr) {
+                let textNodeFound = false;
+                element.childNodes.forEach(node => {
+                    if (node.nodeType === Node.TEXT_NODE && !textNodeFound) {
+                        node.nodeValue = isEnglish ? contentAr : contentEn;
+                        textNodeFound = true;
+                    }
+                });
+            }
+        });
     });
 });
+
+// Contact form handler with validation
 function sendMail(event) {
-    event.preventDefault(); // منع إرسال النموذج بشكل عادي
+    event.preventDefault();
 
-    // الحصول على قيم الحقول
-    const name = document.querySelector('input[name="name"]').value;
-    const email = document.querySelector('input[name="email"]').value;
-    const subject = document.querySelector('input[name="subject"]').value;
-    const message = document.querySelector('textarea[name="message"]').value;
+    const formData = {
+        name: document.querySelector('input[name="name"]').value.trim(),
+        email: document.querySelector('input[name="email"]').value.trim(),
+        subject: document.querySelector('input[name="subject"]').value.trim(),
+        message: document.querySelector('textarea[name="message"]').value.trim()
+    };
 
-    // إنشاء رابط mailto
-    const mailtoLink = `mailto:Mustafamemo2274@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\nMessage: " + message)}`;
+    // Basic validation
+    if (!formData.name || !formData.email || !formData.message) {
+        alert('Please fill in all required fields');
+        return;
+    }
 
-    // فتح رابط mailto
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+        alert('Please enter a valid email address');
+        return;
+    }
+
+    // Create mailto link with encoded parameters
+    const mailtoLink = `mailto:Mustafamemo2274@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage: ${formData.message}`
+    )}`;
+
+    // Open mailto link
     window.location.href = mailtoLink;
-  };
+}

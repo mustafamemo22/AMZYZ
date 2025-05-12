@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply Now - AMZYZ</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/prettyPhoto.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <header id="header">
+        <nav id="main-nav" class="navbar navbar-default navbar-fixed-top" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
+                </div>
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html" target="_blank">Home</a></li>
+                        <li><a href="./index.html#about">About</a></li>
+                        <li><a href="./index.html#services">Services</a></li>
+                        <li><a href="./index.html#portfolio">Portfolio</a></li>
+                        <li><a href="./index.html#contact-us">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="apply-form" class="section-padding">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Apply Now</h2>
+                <p>Fill out the form below to start your application process</p>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="contact-info">
+                        <form id="applicationForm" onsubmit="submitApplication(event)">
+                            <h3 class="form-section-title">Student Information</h3>
+                            <div class="form-group">
+                                <label for="fullName">Full Name *</label>
+                                <input type="text" class="form-control" id="fullName" name="fullName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="dob">Date of Birth *</label>
+                                <input type="date" class="form-control" id="dob" name="dob" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="gender">Gender *</label>
+                                <select class="form-control" id="gender" name="gender" required>
+                                    <option value="">Select gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+
+                            <h3 class="form-section-title">Passport Information</h3>
+                            <div class="form-group">
+                                <label for="passportNumber">Passport Number *</label>
+                                <input type="text" class="form-control" id="passportNumber" name="passportNumber" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="passportIssueDate">Passport Issue Date *</label>
+                                <input type="date" class="form-control" id="passportIssueDate" name="passportIssueDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="passportExpiryDate">Passport Expiry Date *</label>
+                                <input type="date" class="form-control" id="passportExpiryDate" name="passportExpiryDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="passportIssuePlace">Passport Issue Place *</label>
+                                <input type="text" class="form-control" id="passportIssuePlace" name="passportIssuePlace" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="nationality">Nationality *</label>
+                                <input type="text" class="form-control" id="nationality" name="nationality" required>
+                            </div>
+
+                            <h3 class="form-section-title">Father's Information</h3>
+                            <div class="form-group">
+                                <label for="fatherName">Father's Full Name *</label>
+                                <input type="text" class="form-control" id="fatherName" name="fatherName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="fatherDob">Father's Date of Birth *</label>
+                                <input type="date" class="form-control" id="fatherDob" name="fatherDob" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="fatherPassport">Father's Passport Number *</label>
+                                <input type="text" class="form-control" id="fatherPassport" name="fatherPassport" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="fatherNationality">Father's Nationality *</label>
+                                <input type="text" class="form-control" id="fatherNationality" name="fatherNationality" required>
+                            </div>
+
+                            <h3 class="form-section-title">Mother's Information</h3>
+                            <div class="form-group">
+                                <label for="motherName">Mother's Full Name *</label>
+                                <input type="text" class="form-control" id="motherName" name="motherName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="motherDob">Mother's Date of Birth *</label>
+                                <input type="date" class="form-control" id="motherDob" name="motherDob" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="motherPassport">Mother's Passport Number *</label>
+                                <input type="text" class="form-control" id="motherPassport" name="motherPassport" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="motherNationality">Mother's Nationality *</label>
+                                <input type="text" class="form-control" id="motherNationality" name="motherNationality" required>
+                            </div>
+
+                            <h3 class="form-section-title">Academic Information</h3>
+                            <div class="form-group">
+                                <label for="field">Desired Field of Study *</label>
+                                <input type="text" class="form-control" id="field" name="field" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="university">Desired University *</label>
+                                <select class="form-control" id="university" name="university" required>
+                                    <option value="">Select a university</option>
+                                    <option value="cairo">جامعة القاهرة</option>
+                                    <option value="ain_shams">جامعة عين شمس</option>
+                                    <option value="helwan">جامعة حلوان</option>
+                                    <option value="alexandria">جامعة الاسكندرية</option>
+                                    <option value="mansoura">جامعة المنصورة</option>
+                                    <option value="zagazig">جامعة الزقازيق</option>
+                                    <option value="tanta">جامعة طنطا</option>
+                                    <option value="assiut">جامعة اسيوط</option>
+                                    <option value="beni_suef">جامعة بني سويف</option>
+                                    <option value="aswan">جامعة أسوان</option>
+                                    <option value="benha">جامعة بنها</option>
+                                    <option value="portsaid">جامعة بورسعيد</option>
+                                    <option value="fayoum">جامعة الفيوم</option>
+                                    <option value="kafr_el_sheikh">جامعة كفر الشيخ</option>
+                                    <option value="menoufia">جامعة المنوفية</option>
+                                    <option value="minya">جامعة المنيا</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="otherUniversityGroup" style="display: none;">
+                                <label for="otherUniversity">Other University Name *</label>
+                                <input type="text" class="form-control" id="otherUniversity" name="otherUniversity">
+                            </div>
+
+                            <h3 class="form-section-title">Required Documents</h3>
+                            <div class="form-group">
+                                <label>Please attach the following documents *</label>
+                                <div class="document-list">
+                                    <p>1. Student's Passport Copy</p>
+                                    <p>2. Father's Passport Copy</p>
+                                    <p>3. Mother's Passport Copy</p>
+                                    <p>4. Birth Certificate</p>
+                                    <p>5. Personal Photo</p>
+                                    <p>6. Academic Certificate</p>
+                                </div>
+                                <input type="file" class="form-control" id="documents" name="documents" accept=".pdf,.jpg,.jpeg,.png" multiple required>
+                                <small class="text-muted">Please upload all required documents (PDF, JPG, or PNG format, max 5MB each)</small>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Submit Application</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    &copy; 2024 AMZYZ. All Rights Reserved.
+                </div>
+                <div class="col-sm-6">
+                    <ul class="social-icons">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom-scripts.js"></script>
+    <script src="js/application.js"></script>
+</body>
+</html> 
