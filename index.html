@@ -36,6 +36,40 @@
     <link rel="stylesheet" type="text/css" href="css/slider-custom.css" />
     <script type="text/javascript" src="js/modernizr.custom.79639.js"></script>
     <link rel="shortcut icon" href="images/ico/site logo.ico">
+
+    <style>
+        #toggleLang {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            margin-left: 10px;
+        }
+
+        #toggleLang:hover {
+            background-color: #218838;
+        }
+
+        .dropdown-menu {
+            background-color: #fff;
+            border: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 4px;
+        }
+
+        .dropdown-menu > li > a {
+            color: #333;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-menu > li > a:hover {
+            background-color: #f8f9fa;
+            color: #28a745;
+        }
+    </style>
+
 </head>
 
 <body id="home">
@@ -56,6 +90,16 @@
                         <li class="scroll active"><a href="#home" data-en="Home" data-ar="الرئيسية">Home</a></li>
                         <li class="scroll"><a href="#services" data-en="Services" data-ar="خدماتنا">Services</a></li>
                         <li class="scroll"><a href="#about" data-en="About" data-ar="من نحن">About</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-en="Universities" data-ar="الجامعات">Universities <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="cairo-university.html" data-en="Cairo University" data-ar="جامعة القاهرة">Cairo University</a></li>
+                                <li><a href="helwan-university.html" data-en="Helwan University" data-ar="جامعة حلوان">Helwan University</a></li>
+                                <li><a href="ain-shams-university.html" data-en="Ain Shams University" data-ar="جامعة عين شمس">Ain Shams University</a></li>
+                                <li><a href="mansoura-university.html" data-en="Mansoura University" data-ar="جامعة المنصورة">Mansoura University</a></li>
+                                <li><a href="alexandria-university.html" data-en="Alexandria University" data-ar="جامعة الإسكندرية">Alexandria University</a></li>
+                            </ul>
+                        </li>
                         <li class="scroll"><a href="#our-team" data-en="Our Team" data-ar="فريق العمل">Our Team</a></li>
                         <li class="scroll"><a href="#portfolio" data-en="our work" data-ar="اعمالنا">our work</a></li>
                         <li class="scroll"><a href="#required-documents" data-en="documents" data-ar="الأوراق">documents</a></li>
